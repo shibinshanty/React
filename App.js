@@ -1,38 +1,62 @@
- import React from "react";
+ import React from 'react'
  import ReactDOM from "react-dom/client"
-
-//jsx (transpiled before it reaches the js )- Parcel-Babel(transpiling done)
-
-// jsx => React.CreateElement => ReactElement js Object=> Html Element
-
-//React Element
-const TitleComponent=()=>(
-<h1 id='heading'>Namaste React Using JSX</h1>
-);
-
-// add react element into the functions with curly braces
-const heading=(<h1>Namaste React</h1>)
-
-// add variables into function with curly braces
-const number=10000
+import { jsx } from 'react/jsx-runtime'
 
 
-//React Functional Component
+//Creating React.createElement to create a react element
 
-//Component composition
-const HeadingComponent=()=>(
-<div id='top'>
-    {heading}
-    {10000}
-<TitleComponent/>   
-<h1 className="heading">Namaste React in Functional Component</h1>
-</div>
+const header=React.createElement("div",{id:"title"},
+    [React.createElement("h1",{id:"head1",key:"h1"},"This is H1"),
+     React.createElement("h2",{id:"head2",key:"h2"},"This is H2"),
+     React.createElement("h2",{id:"head3",key:"h3"},"This is H3")
+    ],
+)
+
+// creating React element using jsx
+const JsxHeader=
+(
+   <div>
+    <h1>This is h1</h1>
+    <h2>This is h2</h2>
+    <h3>This is h3</h3>
+   </div>
 )
 
 
+//creating React element using functional component with jsx
+
+const TitileComponent=()=>{
+    <div id="header" style={{color:"blue"}}>
+     <h1>This is h1</h1>
+    <h2>This is h2</h2>
+    <h3>This is h3</h3>   
+    </div>
+}
+
+
+const Subtitile=()=>
+(<h4>This is a SubTitle inside TitleComponent</h4>)
+
+
+const SubtitileComponent=()=>
+    (<div id="Header">
+     <h1>This is h1</h1>
+    <h2>This is h2</h2>
+    <h3>This is h3</h3> 
+    <Subtitile/> 
+    </div>)
 
 
 const root=ReactDOM.createRoot(document.getElementById("root"))
 
-root.render(<HeadingComponent/>);
+root.render(<SubtitileComponent/>);
 
+
+const ParentComponent = () => (
+  <div>
+    {TitleComponent}          // ❌ Won’t render, just function reference
+    {TitleComponent()}        // ⚠️ Works, but not JSX standard
+    <TitleComponent />        // ✅ Recommended
+    <TitleComponent></TitleComponent> // ✅ Same as above
+  </div>
+);
