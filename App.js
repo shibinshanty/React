@@ -1,36 +1,23 @@
-  
-  //<div id="parent">
-  //<div id="child1">
-  //<h1>"Hello I am an H1 tag"</h1>
-  //<h2>"Hello I am an H2 tag"</h2>
-  // </div>
-  //<div id="child2">
-   //<h1>"Hello I am an H1 tag"</h1>
-  //<h2>"Hello I am an H2 tag"</h2>
-  // </div>
-  // </div>
+ import React from "react";
+ import ReactDOM from "react-dom/client"
+
+                     // (render) 
+ //React.CreateElement => ReactElement js Object=> Html Element
 
 
+const heading=React.createElement("h1",{id:"heading"},"Namaste React")
+
+console.log(heading);
+
+//jsx (transpiled before it reaches the js )- Parcel-Babel(transpiling done)
+
+// jsx => React.CreateElement => ReactElement js Object=> Html Element
 
 
+const jsxHeading=<h1 id='heading'>Namaste React Using JSX</h1>
 
+console.log(jsxHeading);
 
+const root=ReactDOM.createRoot(document.getElementById("root"))
 
-
-const parent=React.createElement("div",{id:"parent"},[
-    React.createElement("div",{id:"child1"},[
-      React.createElement("h1",{},"Hello I am an H1 tag"),
-      React.createElement("h2",{},"Hello I am an H2 tag")
-    ]),
-     React.createElement("div",{id:"child2"},[
-      React.createElement("h1",{},"Hello I am an H1 tag"),
-      React.createElement("h2",{},"Hello I am an H2 tag")
-    ])
-])
-
-console.log(parent)
-
-
-const root=ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(parent);
+root.render(jsxHeading);
