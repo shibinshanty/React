@@ -11,9 +11,10 @@ const TitleComponent=()=>(
 );
 //React Functional Component
 
+//Component composition
 const HeadingComponent=()=>(
 <div id='top'>
-<TitleComponent/>
+<TitleComponent/>   
 <h1 className="heading">Namaste React in Functional Component</h1>
 </div>
 )
